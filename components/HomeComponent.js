@@ -30,7 +30,7 @@ class Home extends Component {
             partners: PARTNERS,
             promotions: PROMOTIONS
         };
-    }
+    };
 
     static navigationOptions = {
         title: 'Home'
