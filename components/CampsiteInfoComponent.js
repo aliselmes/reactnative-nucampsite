@@ -14,7 +14,7 @@ const mapStateToProps = state => {
     };
 };
 
-mapDispatchToProps = {
+const mapDispatchToProps = {
     postFavorite: campsiteId =>(postFavorite(campsiteId)),
     postComment: (campsiteId, rating, author, text) =>(postComment(campsiteId, rating, author, text))
 };
@@ -118,7 +118,8 @@ class CampsiteInfo extends Component {
         this.setState({
             rating: 5,
             author: '',
-            text: ''
+            text: '',
+            showModal: false
         }); 
     }
 
