@@ -19,13 +19,33 @@ class Reservation extends Component {
         title: 'Reserve Campsite'
     }
 
+    handleReservation() {
+        console.log(JSON.stringify(this.state));
+        Alert.alert(
+            'Begin Search?',
+            `Number of Campers: ${this.state.campers} \nHike-In? ${this.state.hikeIn} \nDate: ${this.state.date.toLocaleDateString('en-US')}`,
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => this.resetForm(), 
+                    style: 'cancel'
+                },
+                {
+                    text: 'OK',
+                    onPress: () => this.resetForm()
+                }
+            ],
+            { cancelable: false }    
+        );
+    }
+
 
     resetForm() {    
         this.setState({
             campers: 1,
             hikeIn: false,
             date: new Date(),
-            showCalendar: false
+            showCalendar: false 
         });
     }
 
@@ -82,23 +102,7 @@ class Reservation extends Component {
                 )}
                 <View style={styles.formRow}>
                     <Button
-                        onPress={() => Alert.alert(
-                                'Begin Search?',
-                                `Number of Campers: ${this.state.campers} \n\nHike-In? ${this.state.hikeIn} \n\nDate: ${this.state.date.toLocaleDateString('en-US')}`,
-                            [
-                                {
-                                    text: 'Cancel',
-                                    onPress: () => this.resetForm(), 
-                                    style: 'cancel'
-                                },
-                                {
-                                    text: 'OK',
-                                    onPress: () => this.resetForm()
-                                }
-                            ],
-                            { cancelable: false }    
-                        )
-                    }
+                        onPress={() => this.handleReservation()}
                         title='search'
                         color='#5637DD'
                         accessibilityLabel='Tap me to search for available campsites to reserve'
